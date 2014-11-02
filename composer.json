@@ -1,0 +1,22 @@
+{
+    "name": "tahoelimited/tahoe-theme-bundle",
+    "type": "symfony-bundle",
+    "description": "A theme bundle for tahoe apps",
+    "keywords": ["theme"],
+    "homepage": "https://github.com/tahoelimited/tahoe-theme-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve Gill",
+            "email": "steve.gill@tahoelimited.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5",
+        "symfony/framework-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "Tahoe\\Bundle\\ThemeBundle\\": "" }
+    }
+}
