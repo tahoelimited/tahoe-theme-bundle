@@ -1,0 +1,28 @@
+{% macro popover_info(title, location, text) %}
+    <span class="btn popovers btn-circle btn-icon-only btn-default"
+       data-container="body" data-trigger="hover"
+       data-placement="{{ location }}"
+       data-content="{{ text }}"
+       data-original-title="{{ title }}">
+        <i class="fa fa-info"></i>
+    </span>
+{% endmacro %}
+
+{% macro popover_link(title, location, href, text) %}
+    <a class="btn popovers btn-circle btn-icon-only btn-default" href="{{ href }}"
+       data-container="body" data-trigger="hover"
+       data-placement="{{ location }}"
+       data-content="{{ text }}"
+       data-original-title="{{ title }}">
+        <i class="fa fa-mail-forward"></i>
+    </a>
+{% endmacro %}
+
+{% macro popover_th_icon(data, title, location, text) %}
+    <th><i class="{{ data }} popovers"
+           data-container="body"
+           data-trigger="hover"
+           data-placement="{{ location }}"
+           data-content="{{ text }}"
+           data-original-title="{{ title }}"></i></th>
+{% endmacro %}
