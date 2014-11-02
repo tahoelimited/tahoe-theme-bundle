@@ -1,0 +1,98 @@
+{% macro index_actions(url, entity) %}
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-green-sharp bold uppercase">Actions</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <ul class="nav nav-list nav-stacked">
+                <li>
+                    <a class="btn btn-success" href="{{ url }}">
+                        Add {{ entity }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro show_actions(routePrefix, entityName, entity, extra_actions) %}
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-green-sharp bold uppercase">ACTIONS</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <ul class="nav nav-list nav-stacked">
+                <li>
+                    <a class="btn popovers btn-success " href="{{ path(routePrefix ~ '_edit', {'id': entity.id}) }}"
+                       data-container="body" data-trigger="hover"
+                       data-placement="bottom"
+                       data-content="Click this button to edit the details of this {{ entityName }} ({{ entity }})"
+                       data-original-title="Edit {{ entityName }}">
+                        <i class="fa fa-pencil"></i>
+                        Edit {{ entityName }}
+                    </a>
+
+                </li>
+                {% for action in extra_actions %}
+                <br>
+                <li>
+                    <a class="btn btn-danger" href="{{ path(routePrefix ~ action.routeSuffix, {'id': entity.id}) }}">
+                        {{ action.title }}
+                    </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% macro show_custom_actions(actions, routePrefix, show_list, entityName, entity) %}
+    <div class="portlet light actions bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-green-sharp bold uppercase">Actions</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <ul class="nav nav-list nav-stacked">
+                {% for action in actions %}
+                    <li>
+                        <a class="btn btn-block {{ action.color }}" href="{{ path(routePrefix ~ action.routeSuffix, {'id': entity.id}) }}">
+                            {{ action.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+                {% if show_list %}
+                <li>
+                    <a class="btn btn-block yellow" href="{{ path(routePrefix ~ '_index') }}">
+                        Return to list
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro filters() %}
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption">
+            <span class="caption-subject font-green-sharp bold uppercase">FILTERS</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div id="searchdiv"></div>
+        <div class="margin-bottom-25 margin-top-25">
+            <input type="checkbox" name="showenabled" id="showenabled" class="text-toggle-button make-switch" checked="checked">
+        </div>
+    </div>
+</div>
+{% endmacro %}
