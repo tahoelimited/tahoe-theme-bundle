@@ -1,0 +1,60 @@
+{% macro index_table(entity, entities, routePrefix) %}
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-green-sharp bold uppercase">{{ entityName }}</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-condensed table-hover datatable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>{{ entity }}</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for _entity in entities %}
+                    <tr>
+                        <td>{{ _entity.id }}</td>
+                        <td><a href="{{ path(routePrefix ~ '_show', {id: _entity.id}) }}">{{ _entity }}</a></td>
+                        <td class="text-right">
+                            <a href="{{ path(routePrefix ~ '_edit', {id: _entity.id}) }}" class="btn btn-default btn-xs">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro show_table(entity, entityName, properties, routePrefix, extraParams) %}
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-green-sharp bold uppercase">{{ entityName }} DETAILS</span>
+            </div>
+            <div class="actions">
+                <a class="btn green-haze btn-circle btn-sm" href="{{ path(routePrefix ~ '_edit', {'id': entity.id} |merge(extraParams|default({}))) }}">
+                    <i class="fa fa-edit"></i>
+                    EDIT
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-condensed">
+                <tbody>
+                {% for field,property in properties %}
+                    <tr>
+                        <th>{{ field | replace({'_': ' '}) | capitalize }}</th>
+                        <td>{{ tahoe_crud_property(entity, property) }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
