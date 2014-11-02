@@ -1,0 +1,45 @@
+<script type="text/javascript">
+
+    // Search for all columns where searchable = true
+    var searchText = datatable.state().search.search;
+    $(".searchText").val(searchText);
+
+    $( ".searchText" ).keyup(function() {
+        datatable.search( this.value ).draw();
+    });
+
+    // Show closed entities (always 2nd column, after ID)
+    $('.showClosedEntities').on( 'click', function () {
+        if($(this).is(":checked"))
+        {
+            datatable.columns(1).search('').draw();
+        } else {
+            datatable.columns(1).search(true).draw();
+        }
+    } );
+
+    // Show all records, or 10 per page
+    $('.showAllRecords').on( 'click', function () {
+        if($(this).is(":checked"))
+        {
+            datatable.page.len(-1).draw();
+        } else {
+            datatable.page.len(10).draw();
+        }
+    } );
+
+    // On dropdown load, set checkboxes etc to reflect saved State
+    $('.dropdown').on( 'click', function () {
+        if (datatable.page.len() == -1) {
+            $('.showSuccessfulRuns').prop('checked', true);
+            $(".showSuccessfulRuns").parent().addClass("checked");
+            $(".ioptions").removeClass("fa-list");
+            $(".ioptions").addClass("fa-exclamation-triangle");
+        }
+        if (datatable.state().columns[1].search.search == false) {
+            $('.showClosedEntities').prop('checked', true);
+            $(".showClosedEntities").parent().addClass("checked");
+        }
+    } );
+
+</script>
