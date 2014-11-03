@@ -1,20 +1,38 @@
 <script>
-    var datatable = $('.datatable').dataTable({
-        "asStripeClasses": [],
-        "iDisplayLength": 10,
-        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        "sDom": 'lftrpi',
-        "bProcessing": true,
-        "aaSorting": [[0, "asc"]],
+    var datatable = $('.datatable').DataTable({
+        "dom": 'rtip',
+        "order": [[ 2, "asc" ]],
+        "deferRender": true,
+        "processing": true,
+        stateSave: true,
+        "stateDuration": 60 * 60 * 24 * 31, // State saved for a month (31 days)
         "columnDefs": [
-            { "mData": "open", "bVisible": false }
+            {
+                // ID
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                // isOpen
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": true
+            },
+            {
+                // Name
+                "targets": [ 2 ],
+                "visible": true,
+                "searchable": true
+            },
+            {
+                // Actions
+                "targets": [ 3 ],
+                "visible": true,
+                "width": "50px",
+                "sortable": false
+            }
         ]
     });
-
-    $('div.dataTables_filter').prependTo($("#searchdiv"));
-    $('div.dataTables_filter :input').addClass('col-md-12');
-
-    $('div.dataTables_length').prependTo($("#searchdiv"));
-    $('div.dataTables_length select').addClass('form-control col-md-12');
 
 </script>

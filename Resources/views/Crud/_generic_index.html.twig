@@ -1,10 +1,12 @@
-<div class="portlet light bordered">
-    <div class="portlet-title">
-        <div class="caption">
-            <span class="caption-subject font-green-sharp bold uppercase">{{ entityName }}</span>
-        </div>
-    </div>
-    <div class="portlet-body">
+{% embed 'TahoeThemeBundle:Widgets:portlet.html.twig' %}
+    {% block caption %}{{ entityName }}{% endblock %}
+    {% block extraclass %}min-height-portlet{% endblock %}
+    {% block inputs %}
+        {% embed 'TahoeThemeBundle:Widgets:portlet_header.html.twig' %}
+        {% endembed %}
+    {% endblock %}
+    {% block actions %}{% endblock %}
+    {% block body %}
         <table class="table table-condensed table-hover datatable">
             <thead>
             <tr>
@@ -21,7 +23,7 @@
                 <tr {% if _entity.isOpen is defined and not _entity.isOpen %} class="disabled" {% endif %}>
                     <td>{{ _entity.id }}</td>
                     {% if _entity.isOpen is defined %}
-                    <td>{{ _entity.isOpen }}</td>
+                        <td>{{ _entity.isOpen }}</td>
                     {% endif %}
                     <td><a href="{{ path(routePrefix ~ '_show', {id: _entity.id}) }}">{{ _entity }}</a></td>
                     <td class="text-right">
@@ -31,5 +33,5 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
-</div>
+    {% endblock %}
+{% endembed %}
