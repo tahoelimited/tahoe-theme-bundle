@@ -31,8 +31,8 @@
     // On dropdown load, set checkboxes etc to reflect saved State
     $('.dropdown').on( 'click', function () {
         if (datatable.page.len() == -1) {
-            $('.showSuccessfulRuns').prop('checked', true);
-            $(".showSuccessfulRuns").parent().addClass("checked");
+            $('.showAllRecords').prop('checked', true);
+            $(".showAllRecords").parent().addClass("checked");
             $(".ioptions").removeClass("fa-list");
             $(".ioptions").addClass("fa-exclamation-triangle");
         }
