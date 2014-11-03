@@ -1,0 +1,14 @@
+{% from 'TahoeThemeBundle:Widgets:sidebar.html.twig' import show_actions %}
+{% from 'TahoeThemeBundle:Widgets:tables.html.twig' import show_table %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="todo-sidebar">
+            {{ show_actions(routePrefix, entityName, entity, [], additional_params) }}
+        </div>
+
+        <div class="todo-content">
+            {{ show_table(entity, entityName, properties, routePrefix, additional_params) }}
+        </div>
+    </div>
+</div>
