@@ -1,0 +1,35 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption">
+            <span class="caption-subject font-green-sharp bold uppercase">{{ entityName }}</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table table-condensed table-hover datatable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                {% if (entities | first).isOpen is defined %}
+                    <th>Open</th>
+                {% endif %}
+                <th>{{ entityName }}</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for _entity in entities %}
+                <tr {% if _entity.isOpen is defined and not _entity.isOpen %} class="disabled" {% endif %}>
+                    <td>{{ _entity.id }}</td>
+                    {% if _entity.isOpen is defined %}
+                    <td>{{ _entity.isOpen }}</td>
+                    {% endif %}
+                    <td><a href="{{ path(routePrefix ~ '_show', {id: _entity.id}) }}">{{ _entity }}</a></td>
+                    <td class="text-right">
+                        <a href="{{ path(routePrefix ~ '_edit', {id: _entity.id}) }}" class="btn btn-info btn-circle btn-xs">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
