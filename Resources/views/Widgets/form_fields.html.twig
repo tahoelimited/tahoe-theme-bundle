@@ -1,0 +1,35 @@
+{% macro readonly_field(label, entity) %}
+    <div class="form-group">
+        <label class="col-md-3 control-label">{{ label }}</label>
+        <div class="col-md-9">
+            <div class="input-icon right">
+                <input type="text" class="form-control " placeholder="{{ entity }}" readonly="">
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro readonly_link_field(label, entity, href) %}
+    <div class="form-group">
+        <label class="col-md-3 control-label">{{ label }}</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <div class="">
+                    <input id="newpassword" class="form-control " type="text" name="password" placeholder="{{ entity }}" readonly="">
+                </div>
+                    <span class="input-group-btn" style="padding-left: 10px">
+                        <a class="btn popovers btn-default" href="{{ href }}"
+                             data-container="body" data-trigger="hover"
+                             data-placement="bottom"
+                             data-content="Click this button to see more details about {{ entity }}"
+                             data-original-title="View {{ label }}">
+                             <i class="icon-action-redo"></i>
+                        </a>
+					</span>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
