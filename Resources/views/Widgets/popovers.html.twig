@@ -26,3 +26,12 @@
            data-content="{{ text }}"
            data-original-title="{{ title }}"></i></th>
 {% endmacro %}
+
+{% macro popover_th(name, title, location, text) %}
+    <th class="popovers"
+        data-container="body"
+        data-trigger="hover"
+        data-placement="{{ location }}"
+        data-content="{{ text }}"
+        data-original-title="{{ title }}">{{ name }}</th>
+{% endmacro %}
