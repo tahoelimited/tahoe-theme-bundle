@@ -10,7 +10,7 @@
 
             {% endblock inputs %}
         </div>
-        <div class="actions margin-left-10">
+        <div class="actions margin-left-10 accordion" id="accordionActions{{ portletId }}">
             {% block actions %}
 
             {% endblock actions %}
@@ -22,6 +22,36 @@
         </ul>
     </div>
     <div class="portlet-body">
+        <div id="collapseOptions{{ portletId }}" class="collapse" aria-expanded="false" style="height: 0px;">
+            <div class="panel panel-warning">
+                <!-- Default panel contents -->
+                <div class="panel-heading clearfix">
+                    <div class="col-md-4">
+                        <h4 class="no-margins">Options</h4>
+                    </div>
+                    <div class="col-md-8 text-right actions">
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" data-original-title="Reset all options to default">
+                            <i class="icon-refresh"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="form-group clearfix">
+                            <label class="col-md-8 control-label">
+                                Show all records on one page?
+                            </label>
+                            <div class="col-md-4">
+                                <input type="checkbox" class="showAllRecords">
+                            </div>
+                        </div>
+                    </li>
+                    {% block options %}
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
         {% block body %}{% endblock body %}
     </div>
     <div class="clearfix"></div>
