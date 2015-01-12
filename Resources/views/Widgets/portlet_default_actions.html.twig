@@ -1,34 +1,8 @@
-<a class="dropdown btn btn-circle btn-icon-only btn-default tooltips" href="javascript:;" data-original-title="Options" data-toggle="dropdown">
+<a class="btn btn-circle btn-icon-only btn-default accordion-toggle collapsed tooltips" data-toggle="collapse" data-parent="#accordionActions{{ portletId }}" href="#collapseOptions{{ portletId }}" aria-expanded="false" data-original-title="Options">
     <i class="icon-wrench"></i>
 </a>
-<ul class="dropdown-menu dropdown-menu-large hold-on-click pull-right">
-    <li>
-        <div class="margin-top-10">
-            <div class="portlet light">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <a href="/" class="no-underline caption-subject font-blue-steel bold uppercase">
-                            Options
-                        </a>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="form-group margin-top-10">
-                        <div class="input-group">
-                            <label>
-                                <input type="checkbox" class="showAllRecords"> Show all records on one page?</label>
-                        </div>
-                        {% block items %}{% endblock items %}
-                    </div>
-                    <div>
-                        <button type="button" class="btn blue-steel btn-block btn-sm"><i class="fa fa-refresh"></i> Reset all options to Default</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-<a href="#" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
+<a href="#" class="btn btn-circle btn-default btn-fullscreen btn-icon-only fullscreen" data-original-title="" title="">
+</a>
 <a class="btn btn-circle btn-icon-only btn-default tooltips" href="javascript:;" data-original-title="Help">
     <i class="icon-speech font-purple"></i>
 </a>
