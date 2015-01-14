@@ -1,8 +1,10 @@
 <script type="text/javascript">
 
     // Search for all columns where searchable = true
-    var searchText = datatable.state().search.search;
-    $(".searchText").val(searchText);
+    if (datatable.state()) {
+        var searchText = datatable.state().search.search;
+        $(".searchText").val(searchText);
+    }
 
     $( ".searchText" ).keyup(function() {
         datatable.search( this.value ).draw();
