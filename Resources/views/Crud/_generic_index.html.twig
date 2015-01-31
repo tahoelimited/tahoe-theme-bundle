@@ -1,4 +1,4 @@
-{% embed 'TahoeThemeBundle:Widgets:portlet.html.twig' %}
+{% embed 'TahoeThemeBundle:Widgets:portlet.html.twig' with {'portletId': 1} %}
     {% block caption %}{{ entityName }}{% endblock %}
     {% block extraclass %}min-height-portlet{% endblock %}
     {% block inputs %}
