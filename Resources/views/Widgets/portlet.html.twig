@@ -1,3 +1,5 @@
+{% set portletId = portletId is defined ? portletId : 1 %}
+
 <div class="portlet light {% block extraclass %}{% endblock %}">
     <div class="portlet-title tabbable-line {% block titleextraclass %}{% endblock titleextraclass %}">
         <div class="caption font-blue-steel">
